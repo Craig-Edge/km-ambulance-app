@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './CalloutForm.css'; // Import your CSS file for styling
 
 const CalloutForm = ({ patientDetails, medicalCondition }) => {
   const [calloutData, setCalloutData] = useState({
@@ -35,8 +36,8 @@ const CalloutForm = ({ patientDetails, medicalCondition }) => {
       // Clear the form after submission
       setCalloutData({
         status: 'pending',
-        actionsTaken: '',
-        treatmentNotes: ''
+        actions_taken: '',
+        treatment_notes: ''
       });
     } catch (error) {
       console.error('Error submitting callout:', error);
@@ -44,31 +45,31 @@ const CalloutForm = ({ patientDetails, medicalCondition }) => {
   };
 
   return (
-    <div>
+    <div className="callout-form-container">
       <h2>Patient Details</h2>
       <p>Patient: {patientDetails.last_name}, {patientDetails.first_name}</p>
       <p>Condition: {medicalCondition}</p>
       {/* Add more patient details here as needed */}
       
-      <form onSubmit={handleSubmit}>
-        <label>
-          Status:
-          <select name="status" value={calloutData.status} onChange={handleStatusChange}>
-            <option value="pending">Pending</option>
+      <form className="callout-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="status">Status:</label>
+          <select id="status" name="status" value={calloutData.status} onChange={handleStatusChange}>
+          <option value="pending">Pending</option>
             <option value="accepted">Accepted</option>
             <option value="in_transit">In Transit</option>
             <option value="completed">Completed</option>
             <option value="cancelled">Cancelled</option>
           </select>
-        </label>
-        <label>
-          Actions Taken:
-          <textarea name="actions_taken" value={calloutData.actions_taken} onChange={handleInputChange} />
-        </label>
-        <label>
-          Treatment Notes:
-          <textarea name="treatment_notes" value={calloutData.treatment_notes} onChange={handleInputChange} />
-        </label>
+        </div>
+        <div className="form-group">
+          <label htmlFor="actions_taken">Actions Taken:</label>
+          <textarea id="actions_taken" name="actions_taken" value={calloutData.actions_taken} onChange={handleInputChange} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="treatment_notes">Treatment Notes:</label>
+          <textarea id="treatment_notes" name="treatment_notes" value={calloutData.treatment_notes} onChange={handleInputChange} />
+        </div>
         <button type="submit">Submit Callout</button>
       </form>
     </div>

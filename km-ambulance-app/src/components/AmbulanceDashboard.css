@@ -20,3 +20,9 @@
     cursor: pointer;
   }
   
+  .request-list {
+    /* Remove default list styles */
+    list-style: none;
+    padding: 0;
+  }
+  
