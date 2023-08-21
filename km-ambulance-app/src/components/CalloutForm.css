@@ -1,6 +1,6 @@
 /* CalloutForm.css */
 
-.callout-form {
+.callout-form-container {
     background-color: #f7f7f7;
     padding: 20px;
     border: 1px solid #ccc;
@@ -24,6 +24,10 @@
     margin-top: 20px;
   }
   
+  .callout-form .form-group {
+    margin-bottom: 20px;
+  }
+  
   .callout-form label {
     display: block;
     margin-bottom: 5px;
@@ -35,7 +39,6 @@
   .callout-form textarea {
     width: 100%;
     padding: 8px;
-    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
