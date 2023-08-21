@@ -1,28 +1,70 @@
+/* Add your existing styling here */
+
 .dashboard-container {
-    padding: 20px;
-  }
-  
-  .request-item {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .request-info {
-    font-weight: bold;
-  }
-  
-  .accept-button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .request-list {
-    /* Remove default list styles */
-    list-style: none;
-    padding: 0;
-  }
-  
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  margin: 20px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dashboard-title {
+  font-size: 24px;
+}
+
+.refresh-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.refresh-button:hover {
+  background-color: #0056b3;
+}
+
+.request-list {
+  list-style: none;
+  padding: 0;
+}
+
+.request-item {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.request-info {
+  flex: 1;
+}
+
+.accept-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.accept-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}

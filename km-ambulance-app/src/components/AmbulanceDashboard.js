@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CalloutForm from './CalloutForm';
-import './AmbulanceDashboard.css'; // Import your CSS file for styling
+import './AmbulanceDashboard.css';
 
 const AmbulanceDashboard = () => {
   const [acceptedRequests, setAcceptedRequests] = useState([]);
@@ -49,7 +49,10 @@ const AmbulanceDashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <h2>Ambulance Dashboard</h2>
+      <div className="dashboard-header">
+        <h2 className="dashboard-title">Ambulance Dashboard</h2>
+        <button className="refresh-button" onClick={fetchAcceptedRequests}>Refresh</button>
+      </div>
       <ul className="request-list">
         {acceptedRequests.map(request => (
           <li className="request-item" key={request.id}>
@@ -59,10 +62,17 @@ const AmbulanceDashboard = () => {
               <p><strong>Requesting Hospital:</strong> {request.chosen_hospital}</p>
               <p><strong>Location:</strong> {request.location}</p>
             </div>
-            <button className="accept-button" onClick={() => handleDispatchAccepted(request.id)}>Accept Dispatch</button>
-            {request.patientDetails && (
-              <CalloutForm nhsNumber={request.nhs_number} patientDetails={request.patientDetails} medicalCondition={request.medical_condition} />
-            )}
+            <div className="request-actions">
+              {request.patientDetails ? (
+                <div className="form-container">
+                  <CalloutForm nhsNumber={request.nhs_number} patientDetails={request.patientDetails} medicalCondition={request.medical_condition} />
+                </div>
+              ) : (
+                <div className="accept-button-container">
+                  <button className="accept-button" onClick={() => handleDispatchAccepted(request.id)}>Accept Dispatch</button>
+                </div>
+              )}
+            </div>
           </li>
         ))}
       </ul>
