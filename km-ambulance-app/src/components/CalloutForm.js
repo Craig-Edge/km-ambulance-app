@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './CalloutForm.css'; // Import your CSS file for styling
+import './CalloutForm.css';
 
 const CalloutForm = ({ patientDetails, medicalCondition }) => {
   const [calloutData, setCalloutData] = useState({
@@ -24,16 +24,13 @@ const CalloutForm = ({ patientDetails, medicalCondition }) => {
     event.preventDefault();
 
     try {
-      // Create a new callout record using calloutData
+  
       const response = await axios.post('http://127.0.0.1:8000/api/patient-callouts/', {
         ...calloutData,
         patient: patientDetails.calloutId
       });
-
-      // Handle successful submission (e.g., show a success message)
       console.log('Callout record created:', response.data);
 
-      // Clear the form after submission
       setCalloutData({
         status: 'pending',
         actions_taken: '',
@@ -49,7 +46,6 @@ const CalloutForm = ({ patientDetails, medicalCondition }) => {
       <h2>Patient Details</h2>
       <p>Patient: {patientDetails.last_name}, {patientDetails.first_name}</p>
       <p>Condition: {medicalCondition}</p>
-      {/* Add more patient details here as needed */}
       
       <form className="callout-form" onSubmit={handleSubmit}>
         <div className="form-group">

@@ -24,13 +24,9 @@ const AmbulanceDashboard = () => {
       await axios.patch(`http://localhost:8001/api/dispatch-requests/${id}/`, {
         dispatch_status: 'ambulance accepted'
       });
-
-      // Fetch patient details based on nhs_number
       const selectedRequest = acceptedRequests.find(request => request.id === id);
       const response = await axios.get(`http://localhost:8000/api/patients/?nhs_number=${selectedRequest.nhs_number}`);
-      const patientDetails = response.data[0]; // Assuming the response is an array
-
-      // Render the CalloutForm component with patient details
+      const patientDetails = response.data[0];
       setAcceptedRequests(prevRequests => {
         return prevRequests.map(request => {
           if (request.id === id) {
